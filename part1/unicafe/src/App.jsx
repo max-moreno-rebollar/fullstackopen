@@ -7,18 +7,24 @@ const Button = ({text, onClick}) => {
 const Stats = ({good, neutral, bad, total}) => {
   if(total == 0) {
     return(
-      <tr>No feedback given</tr>
+      <tbody>
+        <tr>
+          <td>No feedback given/</td>
+        </tr>
+      </tbody>
+      
     )
   }
+
   return(
-    <>
+    <tbody>
       <Stat text="good" stat={good}/>
       <Stat text="neutral" stat={neutral}/>
       <Stat text="bad" stat={bad}/>
       <Stat text="all" stat={total}/>
       <Stat text="average" stat={(good - bad) / total}/>
       <Stat text="positive" stat={`${good / total}%`}/>
-    </>
+    </tbody>
   )
 }
 
