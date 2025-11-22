@@ -16,7 +16,7 @@ const getRating = (ratio: number): Rating => {
   return 1;
 };
 
-const calculateExercies = (data: number[], target: number): Stats => {
+export const calculateExercies = (data: number[], target: number): Stats => {
   const avg = data.reduce((a, b) => a + b) / data.length;
   const rating = getRating(avg / target);
 
@@ -37,6 +37,14 @@ const calculateExercies = (data: number[], target: number): Stats => {
   };
 };
 
-const height = console.log(process.argv);
+if (require.main === module) {
+  const data = process.argv.slice(3).map((x) => parseFloat(x));
+  const training = data.slice(1);
+  const target = data[0];
 
-console.log(calculateExercies([3, 0, 2, 4.5, 0, 3, 1], 2));
+  if (data.length < 2) {
+    console.log("Please input appropriate data.");
+  } else {
+    console.log(calculateExercies(training, target));
+  }
+}
